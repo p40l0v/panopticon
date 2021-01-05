@@ -1,0 +1,119 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+  height: auto;
+  overflow: scroll;
+  pointer-events: none;
+}
+
+.container {
+  height: 1200vh;
+  z-index: -4;
+  overflow: scroll;
+}
+
+.canvascont {
+  height: 2200vh;
+  z-index: 4;
+  overflow: scroll;
+}
+
+#c {
+  width: 100vh;
+  height: auto;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -2;
+  overflow: scroll;
+}
+
+#content {
+  font-size: 7vw;
+  font-family: sans-serif;
+  width: 100%;
+  height: 2020vh;
+}
+
+#text{
+  width: 100%;
+  margin: 0, auto;
+}
+
+h1{
+  color: white;
+  text-align: center;
+}
+
+.ml2 {
+  font-weight: 900;
+  font-size: 1.7em;
+}
+
+.ml2 .letter {
+  display: inline-block;
+  line-height: 2em;
+}
+
+h3 {
+  font-size: 5vw;
+  font-weight: normal;
+  text-align:center;
+  width:70%;
+  margin: 0 auto;
+}
+
+h4 {
+  font-size: 4vw;
+  font-weight: normal;
+  width:80%;
+
+}
+
+p {
+  font-size: 2vw;
+  font-weight: normal;
+  width:80%;
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+.left{
+  display: flex;
+  justify-content: left;
+  text-align: left;
+  margin: 5vw 10vw;
+  width:40%;
+
+
+}
+
+.right{
+  display: block;
+  justify-content: right;
+  text-align: right;
+  margin-right: 5vw ;
+  width:40%;
+}
