@@ -40,40 +40,32 @@ function main() {
 
   function initThree() {
     renderer.setPixelRatio(window.devicePixelRatio || 1);
-    renderer.setClearColor(0x161216)
+    renderer.setClearColor(0x0d0d0d)
     camera.position.y = 10;
-    camera.position.z = 300;
+    camera.position.z = 1000;
     resize()
     container.appendChild(renderer.domElement);
   }
 
-
-
   function initTimeline() {
     timeline = anime.timeline({
       autoplay: false,
-      duration: 10000,
+      duration: 100000,
       easing: 'easeOutSine'
     });
 
-    var textWrapper = document.querySelector('.ml2');
+    var textWrapper = document.querySelector('.ml16');
     textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-    anime.timeline({loop: true})
+    anime.timeline({
+        loop: false
+      })
       .add({
-        targets: '.ml2 .letter',
-        scale: [4,1],
-        opacity: [0,1],
-        translateZ: 0,
+        targets: '.ml16 .letter',
+        translateY: [-150, 0],
         easing: "easeOutExpo",
-        duration: 950,
-        delay: (el, i) => 70*i
-      }).add({
-        targets: '.ml2',
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
+        duration: 2000,
+        delay: (el, i) => 30 * i,
       });
 
 
@@ -81,24 +73,105 @@ function main() {
       targets: camera.position,
       x: 0,
       y: 10,
-      z: 50,
+      z: 200,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#content",
+      translateY: -1700,
       duration: 300,
       update: camera.updateProjectionMatrix()
-    });
+    })
 
     timeline.add({
       targets: camera.position,
       x: 0,
-      y: 2,
-      z: 30,
-      duration: 300,
+      y: 7,
+      z: 80,
+      duration: 100,
       update: camera.updateProjectionMatrix()
-    });
+    })
 
     timeline.add({
       targets: "#content",
-      translateY: -1800,
-      duration: 500,
+      translateY: -2600,
+      duration: 150,
+      update: camera.updateProjectionMatrix()
+    })
+
+    var initial = new THREE.Color(0x0d0d0d)
+    var value = new THREE.Color(0xeaeaea)
+    timeline.add({
+      targets: initial,
+      r: [initial.r, value.r],
+      g: [initial.g, value.g],
+      b: [initial.b, value.b],
+      duration: 400,
+      update: () => {
+        renderer.setClearColor(initial);
+      }
+    }, 0);
+
+    timeline.add({
+      targets: "#subtitle",
+      opacity: 0,
+      duration: 100,
+      delay: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.position,
+      x: -20,
+      y: 15,
+      z: 30,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.rotation,
+      y: -.5,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#content",
+      translateY: -3500,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#important",
+      opacity: 1,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.position,
+      x: -10,
+      y: 10,
+      z: 10,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#p0",
+      opacity: 1,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#content",
+      translateY: -4200,
+      duration: 50,
       update: camera.updateProjectionMatrix()
     })
 
@@ -107,14 +180,69 @@ function main() {
       x: 0,
       y: 2,
       z: 0,
-      duration: 300,
+      delay: 50,
+      duration: 100,
       update: camera.updateProjectionMatrix()
-    });
+    })
 
     timeline.add({
       targets: "#content",
-      translateY: -3200,
-      duration: 500,
+      translateY: -4400,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+
+    timeline.add({
+      targets: "#p1",
+      opacity: 1,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.position,
+      x: 0,
+      y: 4,
+      z: 0,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+    timeline.add({
+      targets: "#p2",
+      opacity: 1,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.position,
+      x: 0,
+      y: 8,
+      z: 0,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#p3",
+      opacity: 1,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.position,
+      x: 0,
+      y: 12,
+      z: 0,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+    timeline.add({
+      targets: "#p4",
+      opacity: 1,
+      duration: 50,
       update: camera.updateProjectionMatrix()
     })
 
@@ -123,47 +251,87 @@ function main() {
       x: 0,
       y: 20,
       z: 0,
-      duration: 300,
+      duration: 50,
       update: camera.updateProjectionMatrix()
-    });
-
+    })
     timeline.add({
-      targets: "#content",
-      translateY: -4000,
-      duration: 500,
+      targets: "#p5",
+      opacity: 1,
+      duration: 50,
       update: camera.updateProjectionMatrix()
     })
 
     timeline.add({
-      targets: camera.position,
-      x: 0,
-      y: 30,
-      z: 0,
-      duration: 300,
+      targets: ".point",
+      opacity: 0,
+      duration: 30,
       update: camera.updateProjectionMatrix()
-    });
+    })
 
     timeline.add({
       targets: camera.rotation,
       x: -1.5,
       y: 0,
       z: 0,
-      duration: 300,
+      duration: 50,
       update: camera.updateProjectionMatrix()
-    });
+    })
 
-    var value = new THREE.Color(0xFFFCFC)
-    var initial = new THREE.Color(0x161216)
     timeline.add({
-      targets: initial,
-      r: [initial.r, value.r],
-      g: [initial.g, value.g],
-      b: [initial.b, value.b],
-      duration: 4500,
-      update: () => {
-        renderer.setClearColor(initial);
-      }
-    }, 0);
+      targets: camera.position,
+      x: 0,
+      y: 5,
+      z: 0,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#content",
+      translateY: -5100,
+      opacity: 1,
+      duration: 50,
+      update: camera.updateProjectionMatrix()
+    })
+
+
+    timeline.add({
+      targets: camera.position,
+      x: 0,
+      y: 30,
+      z: 0,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+    timeline.add({
+      targets: "#content",
+      translateY: -6800,
+      opacity: 1,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: "#content",
+      opacity: 0,
+      duration: 50,
+      delay:50,
+      update: camera.updateProjectionMatrix()
+    })
+
+    timeline.add({
+      targets: camera.position,
+      x: 0,
+      y: 100,
+      z: 0,
+      duration: 100,
+      update: camera.updateProjectionMatrix()
+    })
+
+
+
+
+
   }
 
   function animate() {
